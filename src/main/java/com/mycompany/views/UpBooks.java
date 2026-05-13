@@ -24,7 +24,7 @@ public class UpBooks extends javax.swing.JPanel {
 
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
         titleTxt.putClientProperty("JTextField.placeholderText", "Ingrese el título del libro");
         dateTxt.putClientProperty("JTextField.placeholderText", "Ingrese la de publicación del libro.");
         authorTxt.putClientProperty("JTextField.placeholderText", "Ingrese el autor del libro.");
@@ -36,6 +36,15 @@ public class UpBooks extends javax.swing.JPanel {
         stockTxt.putClientProperty("JTextField.placeholderText", "Ingrese el stock total del libro.");
         dispTxt.putClientProperty("JTextField.placeholderText", "Ingrese el númeor de libros disponibles.");
         ejemTxt.putClientProperty("JTextField.placeholderText", "Ingrese el número de ejemplares del libro.");
+
+        javax.swing.JTextField[] txts = {titleTxt, dateTxt, authorTxt, catTxt, edTxt, langTxt, pagsTxt, descTxt, stockTxt, dispTxt, ejemTxt};
+        for (javax.swing.JTextField txt : txts) {
+            txt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+        }
+
+        button.setBackground(Color.decode("#2563eb"));
+        button.setForeground(Color.white);
+        button.putClientProperty("JButton.buttonType", "roundRect");
 
         if (isEdition) {
             title.setText("Editar Libro");

@@ -22,13 +22,19 @@ public class Returns extends javax.swing.JPanel {
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.style", "font: 24 $light.font");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
         folioLbl.putClientProperty("FlatLaf.styleClass", "large");
-        folioLbl.setForeground(Color.black);
+        folioLbl.setForeground(Color.decode("#334155"));
         libroIdLbl.putClientProperty("FlatLaf.styleClass", "large");
-        libroIdLbl.setForeground(Color.black);
+        libroIdLbl.setForeground(Color.decode("#334155"));
         folioTxt.putClientProperty("JTextField.placeholderText", "Ingrese el folio del usuario.");
+        folioTxt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
         libroIdTxt.putClientProperty("JTextField.placeholderText", "Ingrese el ID del Libro a devolver.");
+        libroIdTxt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+
+        button.setBackground(Color.decode("#2563eb"));
+        button.setForeground(Color.white);
+        button.putClientProperty("JButton.buttonType", "roundRect");
     }
    
     /**

@@ -24,27 +24,27 @@ public class Principal extends javax.swing.JPanel {
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.style", "font: light $h1.regular.font");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
         jLabel2.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel2.setForeground(Color.black);
+        jLabel2.setForeground(Color.decode("#334155"));
         jLabel3.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel3.setForeground(Color.black);
+        jLabel3.setForeground(Color.decode("#334155"));
         jLabel4.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel4.setForeground(Color.black);
+        jLabel4.setForeground(Color.decode("#334155"));
         jLabel5.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel5.setForeground(Color.black);
+        jLabel5.setForeground(Color.decode("#334155"));
         jLabel6.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel6.setForeground(Color.black);
+        jLabel6.setForeground(Color.decode("#334155"));
         jLabel7.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel7.setForeground(Color.black);
+        jLabel7.setForeground(Color.decode("#334155"));
         jLabel8.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel8.setForeground(Color.black);
+        jLabel8.setForeground(Color.decode("#334155"));
         jLabel9.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel9.setForeground(Color.black);
+        jLabel9.setForeground(Color.decode("#334155"));
         jLabel10.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel10.setForeground(Color.black);
+        jLabel10.setForeground(Color.decode("#334155"));
         jLabel11.putClientProperty("FlatLaf.styleClass", "large");
-        jLabel11.setForeground(Color.black);
+        jLabel11.setForeground(Color.decode("#334155"));
     }
    
     /**

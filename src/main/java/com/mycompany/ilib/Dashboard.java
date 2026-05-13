@@ -44,6 +44,18 @@ public class Dashboard extends javax.swing.JFrame {
         dateText.setForeground(Color.white);
         appName.putClientProperty("FlatLaf.style", "font: bold $h1.regular.font");
         appName.setForeground(Color.white);
+
+        menu.setBackground(Color.decode("#0f172a"));
+        header.setBackground(Color.decode("#2563eb"));
+
+        javax.swing.JButton[] btns = {btn_prin, btn_lends, btn_returns, btn_users, btn_books, btn_reports};
+        for (javax.swing.JButton btn : btns) {
+            btn.setBackground(Color.decode("#18181b"));
+            btn.setForeground(Color.white);
+            btn.setBorderPainted(true);
+            btn.putClientProperty("JButton.buttonType", "borderless");
+            btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 14, 1, 1));
+        }
     }
     
     private void SetDate() {

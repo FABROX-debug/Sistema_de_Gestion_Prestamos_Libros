@@ -15,7 +15,11 @@ public class Reports extends javax.swing.JPanel {
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
+
+        jButton2.setBackground(Color.decode("#2563eb"));
+        jButton2.setForeground(Color.white);
+        jButton2.putClientProperty("JButton.buttonType", "roundRect");
     }
     
     private void LoadLendings() {

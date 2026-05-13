@@ -16,8 +16,18 @@ public class Books extends javax.swing.JPanel {
     
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
         bookSearch.putClientProperty("JTextField.placeholderText", "Ingrese el título del libro a buscar.");
+        bookSearch.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+
+        // Botones
+        javax.swing.JButton[] btns = {searchButton, addButton, editButton, deleteButton};
+        for (javax.swing.JButton btn : btns) {
+            btn.setBackground(Color.decode("#2563eb"));
+            btn.setForeground(Color.white);
+            btn.putClientProperty("JButton.buttonType", "roundRect");
+        }
+        deleteButton.setBackground(Color.decode("#dc2626"));
     }
     
     private void LoadBooks() {

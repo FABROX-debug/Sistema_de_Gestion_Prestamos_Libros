@@ -23,12 +23,21 @@ public class UpUsers extends javax.swing.JPanel {
 
     private void InitStyles() {
         title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.black);
+        title.setForeground(Color.decode("#0f172a"));
         nameTxt.putClientProperty("JTextField.placeholderText", "Ingrese el nombre del usuario.");
         apPTxt.putClientProperty("JTextField.placeholderText", "Ingrese el apellido paterno del usuario.");
         apMTxt.putClientProperty("JTextField.placeholderText", "Ingrese el apellido materno del usuario.");
         domTxt.putClientProperty("JTextField.placeholderText", "Ingrese el domicilio del usuario.");
         phoneTxt.putClientProperty("JTextField.placeholderText", "Ingrese el teléfono del usuario.");
+
+        javax.swing.JTextField[] txts = {nameTxt, apPTxt, apMTxt, domTxt, phoneTxt};
+        for (javax.swing.JTextField txt : txts) {
+            txt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+        }
+
+        button.setBackground(Color.decode("#2563eb"));
+        button.setForeground(Color.white);
+        button.putClientProperty("JButton.buttonType", "roundRect");
 
         if (isEdition) {
             title.setText("Editar Usuario");
