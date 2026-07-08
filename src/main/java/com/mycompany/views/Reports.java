@@ -14,6 +14,10 @@ public class Reports extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
+        setName("reports.panel");
+        jTable1.setName("reports.table");
+        jButton2.setName("reports.refreshButton");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

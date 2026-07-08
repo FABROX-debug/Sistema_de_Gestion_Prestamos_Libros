@@ -11,10 +11,9 @@ public class Database {
     protected Connection conexion;
 
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private final String DB_URL = "jdbc:mysql://localhost:3306/ilib";
-
-    private final String USER = "root";
-    private final String PASS = "1234";
+    private final String DB_URL = getConfig("ilib.db.url", "ILIB_DB_URL", "jdbc:mysql://localhost:3306/ilib");
+    private final String USER = getConfig("ilib.db.user", "ILIB_DB_USER", "root");
+    private final String PASS = getConfig("ilib.db.password", "ILIB_DB_PASSWORD", "1234");
 
     public void Conectar() throws ClassNotFoundException {
         try {
@@ -32,5 +31,19 @@ public class Database {
                 conexion.close();
             }
         }
+    }
+
+    private String getConfig(String propertyName, String envName, String defaultValue) {
+        String propertyValue = System.getProperty(propertyName);
+        if (propertyValue != null && !propertyValue.trim().isEmpty()) {
+            return propertyValue;
+        }
+
+        String envValue = System.getenv(envName);
+        if (envValue != null && !envValue.trim().isEmpty()) {
+            return envValue;
+        }
+
+        return defaultValue;
     }
 }

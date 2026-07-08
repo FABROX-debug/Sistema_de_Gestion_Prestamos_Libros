@@ -22,6 +22,14 @@ public class UpUsers extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
+        setName("upUsers.panel");
+        nameTxt.setName("upUsers.nameField");
+        apPTxt.setName("upUsers.lastNamePField");
+        apMTxt.setName("upUsers.lastNameMField");
+        domTxt.setName("upUsers.addressField");
+        phoneTxt.setName("upUsers.phoneField");
+        button.setName("upUsers.submitButton");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

@@ -15,6 +15,14 @@ public class Books extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
+        setName("books.panel");
+        bookSearch.setName("books.searchField");
+        searchButton.setName("books.searchButton");
+        addButton.setName("books.addButton");
+        editButton.setName("books.editButton");
+        deleteButton.setName("books.deleteButton");
+        jTable1.setName("books.table");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

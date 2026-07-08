@@ -15,6 +15,14 @@ public class Users extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
+        setName("users.panel");
+        userSearch.setName("users.searchField");
+        searchButton.setName("users.searchButton");
+        addButton.setName("users.addButton");
+        editButton.setName("users.editButton");
+        deleteButton.setName("users.deleteButton");
+        jTable1.setName("users.table");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

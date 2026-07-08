@@ -17,6 +17,11 @@ public class Lendings extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
+        setName("lendings.panel");
+        folioTxt.setName("lendings.userIdField");
+        libroIdTxt.setName("lendings.bookIdField");
+        button.setName("lendings.submitButton");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.formLabel(folioLbl);

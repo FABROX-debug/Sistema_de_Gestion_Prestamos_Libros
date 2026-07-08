@@ -21,6 +21,11 @@ public class Returns extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
+        setName("returns.panel");
+        folioTxt.setName("returns.userIdField");
+        libroIdTxt.setName("returns.bookIdField");
+        button.setName("returns.submitButton");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

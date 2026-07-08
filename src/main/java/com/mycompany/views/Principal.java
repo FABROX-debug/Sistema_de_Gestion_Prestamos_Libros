@@ -23,6 +23,8 @@ public class Principal extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
+        setName("principal.panel");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

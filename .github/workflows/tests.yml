@@ -1,0 +1,73 @@
+name: Pruebas automatizadas iLib
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch:
+
+jobs:
+  automated-tests:
+    name: Unitarias, integracion DAO e interfaz Swing
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: ilib
+          MYSQL_ROOT_PASSWORD: 1234
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -p1234"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "8"
+          cache: maven
+
+      - name: Instalar cliente MySQL y pantalla virtual
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-mysql-client xvfb
+
+      - name: Preparar base de datos
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -uroot -p1234 --silent; do
+            sleep 2
+          done
+          mysql -h 127.0.0.1 -uroot -p1234 ilib < database/ilib.sql
+
+      - name: Ejecutar suite automatizada completa
+        run: |
+          chmod +x ./mvnw
+          xvfb-run -a ./mvnw -B clean verify \
+            -Dilib.db.url=jdbc:mysql://127.0.0.1:3306/ilib \
+            -Dilib.db.user=root \
+            -Dilib.db.password=1234
+
+      - name: Generar reporte HTML
+        if: always()
+        run: ./mvnw -B surefire-report:report-only
+
+      - name: Publicar evidencia de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencia-pruebas-ilib
+          path: |
+            target/surefire-reports/
+            target/failsafe-reports/
+            target/site/
+            target/screenshots/

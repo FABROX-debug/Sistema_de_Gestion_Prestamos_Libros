@@ -23,6 +23,20 @@ public class UpBooks extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
+        setName("upBooks.panel");
+        titleTxt.setName("upBooks.titleField");
+        dateTxt.setName("upBooks.dateField");
+        authorTxt.setName("upBooks.authorField");
+        catTxt.setName("upBooks.categoryField");
+        edTxt.setName("upBooks.editorialField");
+        langTxt.setName("upBooks.languageField");
+        pagsTxt.setName("upBooks.pagesField");
+        descTxt.setName("upBooks.descriptionField");
+        stockTxt.setName("upBooks.stockField");
+        dispTxt.setName("upBooks.availableField");
+        ejemTxt.setName("upBooks.copiesField");
+        button.setName("upBooks.submitButton");
+
         UIStyles.page(this);
         UIStyles.page(bg);
         UIStyles.title(title);

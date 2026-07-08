@@ -32,6 +32,15 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     private void InitStyles() {
+        setName("dashboard.frame");
+        btn_prin.setName("dashboard.homeButton");
+        btn_lends.setName("dashboard.lendingsButton");
+        btn_returns.setName("dashboard.returnsButton");
+        btn_users.setName("dashboard.usersButton");
+        btn_books.setName("dashboard.booksButton");
+        btn_reports.setName("dashboard.reportsButton");
+        content.setName("dashboard.content");
+
         getRootPane().putClientProperty("JRootPane.titleBarBackground", UIStyles.SIDEBAR);
         getRootPane().putClientProperty("JRootPane.titleBarForeground", Color.WHITE);
         background.setBackground(UIStyles.APP_BG);
