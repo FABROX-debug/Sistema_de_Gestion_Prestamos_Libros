@@ -6,8 +6,8 @@ import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.interfaces.DAOBooks;
 import com.mycompany.interfaces.DAOLendings;
 import com.mycompany.interfaces.DAOUsers;
+import com.mycompany.utils.UIStyles;
 import com.mycompany.utils.Utils;
-import java.awt.Color;
 
 public class Lendings extends javax.swing.JPanel {
 
@@ -17,18 +17,17 @@ public class Lendings extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
-        folioLbl.putClientProperty("FlatLaf.styleClass", "large");
-        folioLbl.setForeground(Color.decode("#334155"));
-        libroIdLbl.putClientProperty("FlatLaf.styleClass", "large");
-        libroIdLbl.setForeground(Color.decode("#334155"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.formLabel(folioLbl);
+        UIStyles.formLabel(libroIdLbl);
+        jSeparator1.setForeground(UIStyles.LINE);
         folioTxt.putClientProperty("JTextField.placeholderText", "Ingrese el folio del usuario.");
-        folioTxt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
         libroIdTxt.putClientProperty("JTextField.placeholderText", "Ingrese el ID del Libro a prestar.");
-        libroIdTxt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+        UIStyles.textField(folioTxt);
+        UIStyles.textField(libroIdTxt);
 
-        button.setBackground(Color.decode("#2563eb"));
-        button.setForeground(Color.white);
-        button.putClientProperty("JButton.buttonType", "roundRect");
+        UIStyles.primaryButton(button);
     }
 
     /**

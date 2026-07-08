@@ -1,0 +1,12 @@
+target/
+logs/
+*.log
+.vscode/
+
+# IDE local state
+.idea/
+*.iml
+
+# OS files
+Thumbs.db
+Desktop.ini

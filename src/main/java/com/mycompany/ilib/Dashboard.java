@@ -5,19 +5,15 @@
  */
 package com.mycompany.ilib;
 
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
+import com.mycompany.utils.UIStyles;
 import com.mycompany.views.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Insets;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
  *
@@ -36,25 +32,27 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     private void InitStyles() {
-        mensaje.putClientProperty("FlatLaf.style", "font: 14 $light.font");
-        mensaje.setForeground(Color.black);
-        navText.putClientProperty("FlatLaf.style", "font: bold $h3.regular.font");
+        getRootPane().putClientProperty("JRootPane.titleBarBackground", UIStyles.SIDEBAR);
+        getRootPane().putClientProperty("JRootPane.titleBarForeground", Color.WHITE);
+        background.setBackground(UIStyles.APP_BG);
+        content.setBackground(UIStyles.APP_BG);
+
+        mensaje.putClientProperty("FlatLaf.style", "font: 13");
+        mensaje.setForeground(UIStyles.MUTED);
+        mensaje.setText("Biblioteca pública | Gestión de préstamos");
+        navText.putClientProperty("FlatLaf.style", "font: bold 20");
         navText.setForeground(Color.white);
-        dateText.putClientProperty("FlatLaf.style", "font: 24 $light.font");
+        dateText.putClientProperty("FlatLaf.style", "font: 22");
         dateText.setForeground(Color.white);
-        appName.putClientProperty("FlatLaf.style", "font: bold $h1.regular.font");
+        appName.putClientProperty("FlatLaf.style", "font: bold 34");
         appName.setForeground(Color.white);
 
-        menu.setBackground(Color.decode("#0f172a"));
-        header.setBackground(Color.decode("#2563eb"));
+        menu.setBackground(UIStyles.SIDEBAR);
+        header.setBackground(UIStyles.HEADER);
 
         javax.swing.JButton[] btns = {btn_prin, btn_lends, btn_returns, btn_users, btn_books, btn_reports};
         for (javax.swing.JButton btn : btns) {
-            btn.setBackground(Color.decode("#18181b"));
-            btn.setForeground(Color.white);
-            btn.setBorderPainted(true);
-            btn.putClientProperty("JButton.buttonType", "borderless");
-            btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 14, 1, 1));
+            UIStyles.navButton(btn);
         }
     }
     
@@ -65,17 +63,24 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     private void InitContent() {
+        setActiveMenu(btn_prin);
         ShowJPanel(new Principal());
     }
     
     public static void ShowJPanel(JPanel p) {
-        p.setSize(750, 430);
+        int width = content.getWidth() > 0 ? content.getWidth() : 750;
+        int height = content.getHeight() > 0 ? content.getHeight() : 430;
+        p.setSize(width, height);
         p.setLocation(0,0);
         
         content.removeAll();
         content.add(p, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
+    }
+
+    private void setActiveMenu(javax.swing.JButton selected) {
+        UIStyles.selectedNavButton(selected, btn_prin, btn_lends, btn_returns, btn_users, btn_books, btn_reports);
     }
 
     /**
@@ -337,26 +342,32 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_prinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prinActionPerformed
+        setActiveMenu(btn_prin);
         ShowJPanel(new Principal());
     }//GEN-LAST:event_btn_prinActionPerformed
 
     private void btn_lendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lendsActionPerformed
+        setActiveMenu(btn_lends);
         ShowJPanel(new Lendings());
     }//GEN-LAST:event_btn_lendsActionPerformed
 
     private void btn_returnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_returnsActionPerformed
+        setActiveMenu(btn_returns);
         ShowJPanel(new Returns());
     }//GEN-LAST:event_btn_returnsActionPerformed
 
     private void btn_usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_usersActionPerformed
+        setActiveMenu(btn_users);
         ShowJPanel(new Users());
     }//GEN-LAST:event_btn_usersActionPerformed
 
     private void btn_booksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_booksActionPerformed
+        setActiveMenu(btn_books);
         ShowJPanel(new Books());
     }//GEN-LAST:event_btn_booksActionPerformed
 
     private void btn_reportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportsActionPerformed
+        setActiveMenu(btn_reports);
         ShowJPanel(new Reports());
     }//GEN-LAST:event_btn_reportsActionPerformed
 
@@ -366,6 +377,7 @@ public class Dashboard extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatMaterialLighterIJTheme.setup();
+        UIStyles.setupGlobalDefaults();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

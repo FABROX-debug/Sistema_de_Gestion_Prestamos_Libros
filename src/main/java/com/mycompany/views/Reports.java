@@ -2,7 +2,7 @@ package com.mycompany.views;
 
 import com.mycompany.ilib.DAOLendingsImpl;
 import com.mycompany.interfaces.DAOLendings;
-import java.awt.Color;
+import com.mycompany.utils.UIStyles;
 import javax.swing.table.DefaultTableModel;
 
 public class Reports extends javax.swing.JPanel {
@@ -14,12 +14,13 @@ public class Reports extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
-        title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.decode("#0f172a"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.title(title);
+        UIStyles.table(jTable1, jScrollPane1);
+        UIStyles.columnWidths(jTable1, 120, 120, 190, 190);
 
-        jButton2.setBackground(Color.decode("#2563eb"));
-        jButton2.setForeground(Color.white);
-        jButton2.putClientProperty("JButton.buttonType", "roundRect");
+        UIStyles.primaryButton(jButton2);
     }
     
     private void LoadLendings() {

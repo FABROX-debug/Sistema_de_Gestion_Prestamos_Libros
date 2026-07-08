@@ -3,7 +3,7 @@ package com.mycompany.views;
 import com.mycompany.ilib.DAOBooksImpl;
 import com.mycompany.ilib.Dashboard;
 import com.mycompany.interfaces.DAOBooks;
-import java.awt.Color;
+import com.mycompany.utils.UIStyles;
 import javax.swing.table.DefaultTableModel;
 
 public class Books extends javax.swing.JPanel {
@@ -15,19 +15,20 @@ public class Books extends javax.swing.JPanel {
     }
     
     private void InitStyles() {
-        title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.decode("#0f172a"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.title(title);
         bookSearch.putClientProperty("JTextField.placeholderText", "Ingrese el título del libro a buscar.");
-        bookSearch.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+        UIStyles.textField(bookSearch);
+        UIStyles.table(jTable1, jScrollPane1);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        UIStyles.columnWidths(jTable1, 60, 190, 125, 150, 135, 110, 95, 90, 220, 110, 90, 110);
 
-        // Botones
         javax.swing.JButton[] btns = {searchButton, addButton, editButton, deleteButton};
         for (javax.swing.JButton btn : btns) {
-            btn.setBackground(Color.decode("#2563eb"));
-            btn.setForeground(Color.white);
-            btn.putClientProperty("JButton.buttonType", "roundRect");
+            UIStyles.primaryButton(btn);
         }
-        deleteButton.setBackground(Color.decode("#dc2626"));
+        UIStyles.dangerButton(deleteButton);
     }
     
     private void LoadBooks() {

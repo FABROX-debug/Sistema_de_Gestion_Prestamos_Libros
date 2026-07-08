@@ -2,8 +2,8 @@ package com.mycompany.views;
 
 import com.mycompany.ilib.DAOBooksImpl;
 import com.mycompany.interfaces.DAOBooks;
+import com.mycompany.utils.UIStyles;
 import com.mycompany.utils.Utils;
-import java.awt.Color;
 
 public class UpBooks extends javax.swing.JPanel {
 
@@ -23,8 +23,14 @@ public class UpBooks extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
-        title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.decode("#0f172a"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.title(title);
+        javax.swing.JLabel[] labels = {titleLbl, dateLbl, authorLbl, catLbl, edLbl, langLbl, pagsLbl, descLbl, stockLbl, dispLbl, ejemLbl};
+        for (javax.swing.JLabel label : labels) {
+            UIStyles.formLabel(label);
+        }
+        jSeparator1.setForeground(UIStyles.LINE);
         titleTxt.putClientProperty("JTextField.placeholderText", "Ingrese el título del libro");
         dateTxt.putClientProperty("JTextField.placeholderText", "Ingrese la de publicación del libro.");
         authorTxt.putClientProperty("JTextField.placeholderText", "Ingrese el autor del libro.");
@@ -39,12 +45,10 @@ public class UpBooks extends javax.swing.JPanel {
 
         javax.swing.JTextField[] txts = {titleTxt, dateTxt, authorTxt, catTxt, edTxt, langTxt, pagsTxt, descTxt, stockTxt, dispTxt, ejemTxt};
         for (javax.swing.JTextField txt : txts) {
-            txt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+            UIStyles.textField(txt);
         }
 
-        button.setBackground(Color.decode("#2563eb"));
-        button.setForeground(Color.white);
-        button.putClientProperty("JButton.buttonType", "roundRect");
+        UIStyles.primaryButton(button);
 
         if (isEdition) {
             title.setText("Editar Libro");

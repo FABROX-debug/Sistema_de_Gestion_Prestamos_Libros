@@ -2,7 +2,7 @@ package com.mycompany.views;
 
 import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.interfaces.DAOUsers;
-import java.awt.Color;
+import com.mycompany.utils.UIStyles;
 
 public class UpUsers extends javax.swing.JPanel {
 
@@ -22,8 +22,14 @@ public class UpUsers extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
-        title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.decode("#0f172a"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.title(title);
+        javax.swing.JLabel[] labels = {nameLbl, apPLbl, apMLbl, domLbl, phoneLbl};
+        for (javax.swing.JLabel label : labels) {
+            UIStyles.formLabel(label);
+        }
+        jSeparator1.setForeground(UIStyles.LINE);
         nameTxt.putClientProperty("JTextField.placeholderText", "Ingrese el nombre del usuario.");
         apPTxt.putClientProperty("JTextField.placeholderText", "Ingrese el apellido paterno del usuario.");
         apMTxt.putClientProperty("JTextField.placeholderText", "Ingrese el apellido materno del usuario.");
@@ -32,12 +38,10 @@ public class UpUsers extends javax.swing.JPanel {
 
         javax.swing.JTextField[] txts = {nameTxt, apPTxt, apMTxt, domTxt, phoneTxt};
         for (javax.swing.JTextField txt : txts) {
-            txt.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+            UIStyles.textField(txt);
         }
 
-        button.setBackground(Color.decode("#2563eb"));
-        button.setForeground(Color.white);
-        button.putClientProperty("JButton.buttonType", "roundRect");
+        UIStyles.primaryButton(button);
 
         if (isEdition) {
             title.setText("Editar Usuario");

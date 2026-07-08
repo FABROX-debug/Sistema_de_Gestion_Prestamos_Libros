@@ -3,7 +3,7 @@ package com.mycompany.views;
 import com.mycompany.ilib.DAOUsersImpl;
 import com.mycompany.ilib.Dashboard;
 import com.mycompany.interfaces.DAOUsers;
-import java.awt.Color;
+import com.mycompany.utils.UIStyles;
 import javax.swing.table.DefaultTableModel;
 
 public class Users extends javax.swing.JPanel {
@@ -15,19 +15,19 @@ public class Users extends javax.swing.JPanel {
     }
 
     private void InitStyles() {
-        title.putClientProperty("FlatLaf.styleClass", "h1");
-        title.setForeground(Color.decode("#0f172a"));
+        UIStyles.page(this);
+        UIStyles.page(bg);
+        UIStyles.title(title);
         userSearch.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de usuario a buscar.");
-        userSearch.putClientProperty("JTextField.padding", new java.awt.Insets(0, 10, 0, 10));
+        UIStyles.textField(userSearch);
+        UIStyles.table(jTable1, jScrollPane1);
+        UIStyles.columnWidths(jTable1, 60, 145, 145, 145, 190, 120);
 
-        // Botones
         javax.swing.JButton[] btns = {searchButton, addButton, editButton, deleteButton};
         for (javax.swing.JButton btn : btns) {
-            btn.setBackground(Color.decode("#2563eb"));
-            btn.setForeground(Color.white);
-            btn.putClientProperty("JButton.buttonType", "roundRect");
+            UIStyles.primaryButton(btn);
         }
-        deleteButton.setBackground(Color.decode("#dc2626"));
+        UIStyles.dangerButton(deleteButton);
     }
 
     private void LoadUsers() {
